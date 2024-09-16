@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <div class="header">
+        <img src="{{.Image}}" alt="{{.Name}}">
+        <h2>{{.Name}}</h2>
+    </div>
+    <div class="container">
+        <div class="section">
+            <h3>Start Year</h3>
+            <p>{{.StartYear}}</p>
+            <h3>First Album</h3>
+            <p>{{.FirstAlbum}}</p>
+        </div>
+        <div class="section">
+            <h3>Members</h3>
+            {{range .Members}}
+            <p>{{.}}</p>
+            {{end}}
+        </div>
+        <div class="section">
+            <h3>Concert Locations and Dates</h3>
+            {{range $location, $dates := .DatesByLocation}}
+            <div class="location-dates">
+                <h4><a href="https://www.google.com/maps/search/?api=1&query={{ $location }}" target="_blank">{{ $location }}</a></h4>
+                <ul>
+                    {{range $dates}}
+                    <li>{{.}}</li>
+                    {{end}}
+                </ul>
+            </div>
+            {{end}}
+        </div>
+    </div>
+</html>

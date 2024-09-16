@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Groupie Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/htmx.org@2.0.2"></script>
+    <script src="scripts.js"></script>
+</head>
+<body>
+        <div class="site-card">
+            {{range .}}
+            <div class="artist-card" hx-get="/modal?id={{.ID}}" hx-target="#modal-container" hx-trigger="click">
+                <img src="{{.Img}}">
+                <div class="artist-name">
+                    <h2>{{.Name}}</h2>
+                </div>
+            </div>
+            {{end}}
+        </div>
+        
+</body>
+<div id="modal-container"></div>
+</html>
